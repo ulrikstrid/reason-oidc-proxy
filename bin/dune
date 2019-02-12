@@ -1,0 +1,23 @@
+(executable
+  (name revouch)
+  (public_name revouch)
+  (package revouch)
+	(ocamlopt_flags -O3)
+  (libraries
+    logs.fmt
+    fmt.tty
+    lwt
+    logs
+
+    httpkit-lwt
+    httpkit
+
+    httpaf
+    httpaf-lwt
+
+    yojson
+    str
+    containers
+
+    oidc
+  ))

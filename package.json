@@ -1,0 +1,58 @@
+{
+  "name": "revouch",
+  "version": "0.1.0",
+  "description": "Example Reason Esy Project",
+  "license": "MIT",
+  "esy": {
+    "build": "refmterr dune build -p #{self.name}",
+    "NOTE": "Optional release Section. Customizes result of `esy release`",
+    "release": {
+      "releasedBinaries": [
+        "Hello.exe"
+      ],
+      "deleteFromBinaryRelease": [
+        "*esy_ocaml_*",
+        "*refmterr-*",
+        "ocaml-*"
+      ]
+    }
+  },
+  "scripts": {
+    "run": "esy x Hello.exe",
+    "format": "esy dune build --watch @fmt",
+    "watch": "esy dune build --watch"
+  },
+  "dependencies": {
+    "@esy-ocaml/reason": "*",
+    "@opam/base64": "*",
+    "@opam/containers": "*",
+    "@opam/dune": "*",
+    "@opam/fmt": "*",
+    "@opam/httpaf-lwt": "*",
+    "@opam/httpaf": "*",
+    "@opam/httpkit-lwt": "*",
+    "@opam/httpkit": "*",
+    "@opam/jwt": "*",
+    "@opam/lambda-term": "*",
+    "@opam/logs": "*",
+    "@opam/lwt": "*",
+    "@opam/nocrypto": "*",
+    "@opam/yojson": "*",
+    "@reason-native/console": "*",
+    "ocaml": "~4.6.0",
+    "refmterr": "*"
+  },
+  "resolutions": {
+    "@opam/menhir": "20171013",
+    "@opam/re": "1.8.0",
+    "@opam/httpkit": "ostera/httpkit:httpkit.opam#ac84e6d",
+    "@opam/httpkit-lwt": "ostera/httpkit:httpkit-lwt.opam#ac84e6d",
+    "@opam/httpaf": "anmonteiro/httpaf:httpaf.opam#57e9dd2",
+    "@opam/httpaf-lwt": "anmonteiro/httpaf:httpaf-lwt.opam#57e9dd2"
+  },
+  "devDependencies": {
+    "@opam/merlin": "*",
+    "@reason-native/rely": "*",
+    "ocaml": "~4.6.0"
+  }
+}
