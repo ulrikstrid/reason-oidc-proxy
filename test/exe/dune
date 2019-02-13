@@ -1,6 +1,6 @@
 (executable
    (name RevouchTest)
-   (public_name RevouchTestibTest.exe)
-   (libraries  oidc )
+   (public_name RevouchTest.exe)
+   (libraries  revouch-test.lib )
    (package revouch-test)
 )
