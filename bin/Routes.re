@@ -2,9 +2,7 @@ open Httpaf;
 
 let makeAuth = AuthRoute.make;
 
-let makeAuthCallback = AuthCallbackRoute.make;
-
-let testRequest = TestRequest.make;
+// let makeAuthCallback = AuthCallbackRoute.make;
 
 let makeCallback = (reqd, _mk_context) => {
   let {Httpaf.Request.target, meth, _} as request = Reqd.request(reqd);

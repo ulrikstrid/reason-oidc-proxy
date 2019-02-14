@@ -1,6 +1,6 @@
 (executable
    (name RevouchTest)
    (public_name RevouchTest.exe)
-   (libraries  revouch-test.lib )
+   (libraries  revouch-test)
    (package revouch-test)
 )

@@ -27,6 +27,7 @@ let fromResponse = body =>
   |> Yojson.Basic.Util.to_list
   |> List.map(parseJwks);
 
+/*
 let makeRequest = (discoverData: Discover.t) => {
   open Lwt_result.Infix;
 
@@ -50,7 +51,7 @@ let makeRequest = (discoverData: Discover.t) => {
        }
      );
 };
-
+*/
 let validate = token => {
   true;
 };

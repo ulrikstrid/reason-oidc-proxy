@@ -1,4 +1,4 @@
-let make = _state => {
+/* let make = _state => {
   open Lwt_result.Infix;
 
   let https_url = "https://api.github.com/users/ulrikstrid";
@@ -24,3 +24,4 @@ let make = _state => {
        }
      );
 };
+ */

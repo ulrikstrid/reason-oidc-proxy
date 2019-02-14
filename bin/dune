@@ -9,15 +9,14 @@
     lwt
     logs
 
-    httpkit-lwt
-    httpkit
-
     httpaf
     httpaf-lwt
 
     yojson
     str
     containers
+    jwt
+    uri
 
     oidc
   ))

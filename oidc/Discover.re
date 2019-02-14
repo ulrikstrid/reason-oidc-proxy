@@ -4,7 +4,7 @@ type t = {
   jwks_uri: string,
   userinfo_endpoint: string,
 };
-
+/* 
 let parseDiscover = json =>
   Yojson.Basic.Util.{
     authorization_endpoint:
@@ -48,3 +48,4 @@ let makeRequest = () => {
        }
      );
 };
+ */

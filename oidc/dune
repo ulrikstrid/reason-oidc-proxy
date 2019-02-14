@@ -5,8 +5,6 @@
   (libraries
     lwt
     logs
-    httpkit-lwt
-    httpkit
     
     httpaf
     httpaf-lwt
