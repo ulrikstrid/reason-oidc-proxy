@@ -8,8 +8,7 @@
     
     httpaf
     httpaf-lwt
-    
-    base64
+
     yojson
     str
     containers
