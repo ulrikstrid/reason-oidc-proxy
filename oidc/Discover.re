@@ -4,7 +4,7 @@ type t = {
   jwks_uri: string,
   userinfo_endpoint: string,
 };
-/* 
+
 let parseDiscover = json =>
   Yojson.Basic.Util.{
     authorization_endpoint:
@@ -16,19 +16,18 @@ let parseDiscover = json =>
 
 let fromResponse = body => Yojson.Basic.from_string(body) |> parseDiscover;
 
-let makeRequest = () => {
+let makeRequest = discover_uri => {
   open Lwt_result.Infix;
 
   Logs.app(m => m("Starting discover request"));
 
-  let https_url = "https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration";
-  Logs.app(m => m("Requesting: %s", https_url));
+  Logs.app(m => m("Requesting: %s", discover_uri));
 
   let req =
     Httpkit.Client.Request.create(
       ~headers=[("User-Agent", "ReVouch")],
       `GET,
-      https_url |> Uri.of_string,
+      discover_uri |> Uri.of_string,
     );
 
   Httpkit_lwt.Client.(Https.send(req) >>= Response.body)
@@ -48,4 +47,3 @@ let makeRequest = () => {
        }
      );
 };
- */

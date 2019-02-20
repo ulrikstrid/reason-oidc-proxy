@@ -9,8 +9,12 @@
     httpaf
     httpaf-lwt
 
+    httpkit
+    httpkit-lwt
+
     yojson
     str
     containers
     nocrypto
+    jwt
   ))

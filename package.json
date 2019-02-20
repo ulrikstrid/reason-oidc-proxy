@@ -19,8 +19,8 @@
   },
   "scripts": {
     "run": "esy x Hello.exe",
-    "format": "esy dune build --watch @fmt",
-    "watch": "esy dune build --watch"
+    "format": "esy dune build --watch @fmt -p #{self.name}",
+    "watch": "esy dune build --watch -p #{self.name}"
   },
   "dependencies": {
     "@esy-ocaml/reason": "*",

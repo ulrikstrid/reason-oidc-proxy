@@ -6,7 +6,7 @@ let json_err =
   | Ok(_) as ok => ok
   | Error(err) => Error(`String(err));
 
-let mk_connection_handler = mk_context => {
+let mk_connection_handler = (mk_context: 'a => Routes.ctx) => {
   let connection_handler: (Unix.sockaddr, Lwt_unix.file_descr) => Lwt.t(unit) = {
     let request_handler: (Unix.sockaddr, Reqd.t(_)) => unit =
       (_client_address, request_descriptor) =>
@@ -47,7 +47,7 @@ let mk_connection_handler = mk_context => {
   connection_handler;
 };
 
-let start = (~port=8080, ~ctx, ()) => {
+let start = (~port=8080, ~ctx: 'a => Routes.ctx, ()) => {
   let listen_address = Unix.(ADDR_INET(inet_addr_loopback, port));
 
   Lwt.async(() =>
