@@ -1,8 +1,8 @@
 (executable
   (name revouch)
-  (public_name revouch)
+  (public_name main.exe)
   (package revouch)
-	(ocamlopt_flags -O3)
+  (ocamlopt_flags -O3)
   (libraries
     logs.fmt
     fmt.tty
@@ -20,3 +20,7 @@
 
     oidc
   ))
+
+(env
+  (dev (flags (:standard -g)))
+  (docker (flags (:standard -ccopt -static))))

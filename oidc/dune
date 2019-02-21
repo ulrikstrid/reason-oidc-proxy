@@ -18,3 +18,7 @@
     nocrypto
     jwt
   ))
+
+(env
+  (dev (flags (:standard -g)))
+  (docker (flags (:standard -ccopt -static))))
