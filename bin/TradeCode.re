@@ -6,17 +6,16 @@ let makeRequest =
 
   let body =
     [
-      ("grant_type", "authorization_code"),
       ("client_id", client_id),
+      ("scope", "openid"),
       ("code", code),
       ("redirect_uri", redirect_uri),
+      ("grant_type", "authorization_code"),
       ("client_secret", client_secret),
     ]
-    |> CCList.fold_left(
-         (b, (key, value)) => b ++ key ++ "=" ++ value ++ "&",
-         "",
-       )
-    |> (b => CCString.sub(b, 0, CCString.length(b) - 1));
+    |> Uri.add_query_params'(Uri.empty)
+    |> Uri.to_string
+    |> (s => String.sub(s, 1, String.length(s) - 1));
 
   let req =
     Httpkit.Client.Request.create(
@@ -32,8 +31,8 @@ let makeRequest =
   Httpkit_lwt.Client.(Https.send(req) >>= Response.body)
   |> Lwt.map(res =>
        switch (res) {
-       | Ok(body) => Logs.app(m => m("Response: %s", body))
-       | Error(_) => Logs.err(m => m("Something went wrong!!!"))
+       | Ok(body) => body
+       | Error(_) => "Something went wrong!"
        }
      );
 };

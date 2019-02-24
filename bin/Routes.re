@@ -109,7 +109,10 @@ let makeCallback = (reqd, mk_context) => {
     bodyPromise
     >|= (
       body => {
-        CCString.split_on_char('=', body) |> (l => CCList.nth(l, 1));
+        print_endline(body);
+        Uri.of_string("?" ++ body)
+        |> (uri => Uri.get_query_param(uri, "code"))
+        |> CCOpt.get_or(~default="no_code_here");
       }
     )
     >>= (
@@ -124,7 +127,7 @@ let makeCallback = (reqd, mk_context) => {
           );
         }
         >|= (
-          code => {
+          response => {
             Reqd.respond_with_string(
               reqd,
               Response.create(
@@ -132,11 +135,11 @@ let makeCallback = (reqd, mk_context) => {
                 ~headers=
                   Headers.of_list([
                     ("Connection", "close"),
-                    ("Content-Length", "4"),
-                    /* ("Content-Type", "application/json"), */
+                    ("Content-Type", "application/json"),
+                    Util.contentToLengthHeader(response),
                   ]),
               ),
-              "code",
+              response,
             );
           }
         )
