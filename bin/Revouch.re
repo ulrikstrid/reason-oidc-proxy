@@ -3,13 +3,12 @@ Fmt_tty.setup_std_outputs();
 Logs.set_level(Some(Logs.Debug));
 Logs.set_reporter(Logs_fmt.reporter());
 
-let [discoveryUrl, client_id, redirect_uri, client_secret, oidc_host] =
+let [discoveryUrl, client_id, redirect_uri, client_secret] =
   Sys.[
     getenv_opt("DISCOVERY_URL"),
     getenv_opt("CLIENT_ID"),
     getenv_opt("REDIRECT_URI"),
     getenv_opt("CLIENT_SECRET"),
-    getenv_opt("OIDC_HOST"),
   ]
   |> CCOpt.sequence_l
   |> CCOpt.get_exn;
@@ -27,7 +26,6 @@ let main = () => {
                 client_id,
                 redirect_uri,
                 client_secret,
-                oidc_host,
               }
             );
       }

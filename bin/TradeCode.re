@@ -1,12 +1,5 @@
 let makeRequest =
-    (
-      ~token_endpoint,
-      ~client_id,
-      ~redirect_uri,
-      ~client_secret,
-      ~oidc_host,
-      code,
-    ) => {
+    (~token_endpoint, ~client_id, ~redirect_uri, ~client_secret, code) => {
   open Lwt_result.Infix;
 
   Logs.app(m => m("Trading code for tokens"));
@@ -29,7 +22,6 @@ let makeRequest =
     Httpkit.Client.Request.create(
       ~headers=[
         ("User-Agent", "ReVouch"),
-        //("Host", oidc_host),
         ("Content-Type", "application/x-www-form-urlencoded"),
       ],
       ~body,

@@ -6,7 +6,6 @@ type ctx = {
   client_id: string,
   redirect_uri: string,
   client_secret: string,
-  oidc_host: string,
 };
 
 let makeAuth = AuthRoute.make;
@@ -121,7 +120,6 @@ let makeCallback = (reqd, mk_context) => {
             ~client_id=ctx.client_id,
             ~redirect_uri=ctx.redirect_uri,
             ~client_secret=ctx.client_secret,
-            ~oidc_host=ctx.oidc_host,
             code,
           );
         }
